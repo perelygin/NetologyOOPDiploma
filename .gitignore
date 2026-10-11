@@ -1,0 +1,24 @@
+# Виртуальное окружение
+.venv/
+
+# Кэш Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Файлы IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Артефакты сборки
+build/
+dist/
+*.egg-info
+
+# Переменные окружения
+.env
+
+# Лог‑файлы (если есть)
+*.log
