@@ -1,11 +1,12 @@
 import os
+# import requests
+# import logging
+# import http.client as http_client
+
 from pprint import pprint
-import requests
 from  models.ipify_сlient import IPifyClient
 from  models.ipinfo_сlient import IPinfoClient
 from  models.yandex_disk_client import YandexDiskClient
-import logging
-import http.client as http_client
 
 # # Включаем логирование HTTP-трафика
 # http_client.HTTPConnection.debuglevel = 1
@@ -20,15 +21,15 @@ import http.client as http_client
 
 searching_ip_info={}
 file_name= "ipinfo.json"
-folder_name="Netology Group"
+folder_name="aie-9 Netology Group. Perelygin"
 ip_ify_Client = IPifyClient("https://api.ipify.org")
 searching_ip =ip_ify_Client.get_ip()
 print(f"Статус поиска IP: {searching_ip["message"]}")
-if searching_ip["status_code"]==200:
+if searching_ip["status_code"] == 200:
     ip_info_Client =IPinfoClient("https://ipinfo.io",searching_ip["ip"])
     searching_ip_info = ip_info_Client.get_ip_info()
     print(f"Статуc получения информации об IP: {searching_ip_info["message"]}")
-    if searching_ip_info["status_code"]==200:
+    if searching_ip_info["status_code"] == 200:
         pprint(searching_ip_info["ip_info"])
         token = os.getenv("YandexDiskToken")
         if not token:
