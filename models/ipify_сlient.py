@@ -8,12 +8,8 @@ class IPifyClient(BaseClient):
     def get_ip(self):
         response = requests.get(self.api_base_url)
         if response.status_code == 200:
-            return {
-                "status_code": response.status_code,
-                "message": f"Получен наш ip: {response.text}",
-                "ip": response.text
-            }
-        return {
-                "status_code": response.status_code,
-                "message": f"Ошибка получения нашего ip: {response.text}"
-        }
+            return self._result(200,
+                                "Получена информация об ip",
+                                ip = response.text
+                                )
+        return self._result(response.status_code, f"Ошибка получения нашего ip: {response.text}")

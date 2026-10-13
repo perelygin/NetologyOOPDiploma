@@ -43,7 +43,7 @@ if searching_ip["status_code"] == 200:
                 load_link = ya_Client.get_upload_link(f"/{folder_name}/{file_name}")
                 print(f"Статус получения ссылки для загрузки файла: {load_link["message"]}")
                 if load_link["status_code"] == 200:   #ссылка для загрузки
-                    loaded_file = ya_Client.download_json_data(load_link["href"], searching_ip_info)
+                    loaded_file = ya_Client.download_json_data(load_link["href"], searching_ip_info["ip_info"])
                     print(f"Статус загрузки файла: {loaded_file["message"]}")
                     if loaded_file["status_code"] == 201:  #загрузка файла
                         resource_info = ya_Client.get_resource_info(f"/{folder_name}/{file_name}") #проверка загрузки файла
